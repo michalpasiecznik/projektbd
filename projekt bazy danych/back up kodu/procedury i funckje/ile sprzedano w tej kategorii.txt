@@ -1,0 +1,27 @@
+DELIMITER //
+
+CREATE FUNCTION GetProductCountSoldInCategory(categoryName VARCHAR(255)) RETURNS INT
+BEGIN
+    DECLARE categoryId INT;
+    DECLARE productCountSold INT;
+
+    -- Pobranie identyfikatora kategorii na podstawie nazwy
+    SELECT id INTO categoryId FROM Category WHERE name = categoryName;
+
+    -- Zliczanie ilości sprzedanych produktów w danej kategorii
+    SELECT COUNT(*) INTO productCountSold
+    FROM Orders
+    INNER JOIN Product ON Orders.product_id = Product.id
+    WHERE Product.category_id = categoryId
+    AND Orders.status = 'received';
+
+    RETURN productCountSold;
+END //
+
+DELIMITER ;
+
+
+
+
+SELECT GetProductCountSoldInCategory('Supermarket') AS productCountSold;
+

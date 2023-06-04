@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <title>projektbd</title>
+</head>
+<body>
+    <h1>Aktualizacja statusu zamówienia</h1>
+    
+    <form action="update_order_status.php" method="post">
+        <label for="order_id">Identyfikator zamówienia:</label>
+        <input type="text" name="order_id" id="order_id" required>
+        <br>
+        
+        <label for="new_status">Nowy status:</label>
+        <select name="new_status" id="new_status" required>
+            <option value="placed">Złożone</option>
+            <option value="paid">Opłacone</option>
+            <option value="shipped">Wysłane</option>
+            <option value="received">Otrzymane</option>
+            <option value="return">Zwrot</option>
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Aktualizuj status zamówienia">
+    </form>
+	
+	<br />
+    <br />
+	<h1>Zliczanie produktów w kategorii</h1>
+    <form action="countproduct.php" method="POST">
+        <label for="category">Wybierz kategorię:</label>
+        <select id="category" name="category">
+            <option value="">-- Wybierz --</option>
+            <option value="Elektronika">Elektronika</option>
+            <option value="Moda">Moda</option>
+            <option value="Dom i ogród">Dom i ogród</option>
+            <option value="Supermarket">Supermarket</option>
+            <option value="Dziecko">Dziecko</option>
+            <option value="Uroda">Uroda</option>
+            <option value="Zdrowie">Zdrowie</option>
+            <option value="Kultura i rozrywka">Kultura i rozrywka</option>
+            <option value="Sport i turystyka">Sport i turystyka</option>
+            <option value="Motoryzacja">Motoryzacja</option>
+            <option value="Nieruchomości">Nieruchomości</option>
+            <option value="Kolekcje i sztuka">Kolekcje i sztuka</option>
+            <option value="Firma i usługi">Firma i usługi</option>
+        </select>
+        <input type="submit" value="Pokaż liczbę produktów">
+    </form>
+
+    Liczba produktów: <span id="product_count"></span>
+
+  <script>
+    // Pobierz wartość parametru "productCount" z adresu URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productCount = urlParams.get('productCount');
+
+    // Wyświetl liczbę produktów na stronie
+    const productCountElement = document.getElementById('product_count');
+    productCountElement.textContent = productCount;
+	</script>
+
+	
+</body>
+</html>
+

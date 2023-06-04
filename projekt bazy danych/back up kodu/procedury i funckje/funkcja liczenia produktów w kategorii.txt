@@ -1,0 +1,20 @@
+DELIMITER //
+CREATE FUNCTION GetProductCountInCategory(categoryName VARCHAR(255)) RETURNS INT
+BEGIN
+    DECLARE categoryId INT;
+    DECLARE productCount INT;
+
+    SELECT id INTO categoryId FROM Category WHERE name = categoryName;
+
+    SELECT COUNT(*) INTO productCount FROM Product WHERE category_id = categoryId;
+
+    RETURN productCount;
+END //
+DELIMITER ;
+
+
+
+
+
+
+SELECT GetProductCountInCategory('Elektronika') AS productCount;

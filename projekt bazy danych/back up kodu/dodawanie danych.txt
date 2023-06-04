@@ -1,0 +1,67 @@
+USE projektbd;
+
+-- Dodawanie przykładowych danych do tabeli Users
+INSERT INTO Users (username, password, email, phone_number, address)
+VALUES ('JanKowalski', 'haslo123', 'jan.kowalski@example.com', '123456789', 'ul. Przykładowa 1'),
+       ('AnnaNowak', 'test456', 'anna.nowak@example.com', '987654321', 'ul. Inna 2'),
+       ('PiotrZielinski', 'passwd789', 'piotr.zielinski@example.com', '111222333', 'ul. Różana 3'),
+       ('AdamKowalski', 'haslo123', 'adam.kowalski@example.com', '111111111', 'ul. Kwiatowa 1'),
+       ('EwaNowak', 'test456', 'ewa.nowak@example.com', '222222222', 'ul. Słoneczna 2'),
+       ('MartaWójcik', 'passwd789', 'marta.wojcik@example.com', '333333333', 'ul. Parkowa 3'),
+       ('PiotrKwiatkowski', 'test123', 'piotr.kwiatkowski@example.com', '444444444', 'ul. Polna 4'),
+       ('KarolinaKaczmarek', 'pass456', 'karolina.kaczmarek@example.com', '555555555', 'ul. Leśna 5'),
+       ('MarcinNowicki', 'test789', 'marcin.nowicki@example.com', '666666666', 'ul. Ogrodowa 6'),
+       ('KatarzynaJankowska', 'haslo123', 'katarzyna.jankowska@example.com', '777777777', 'ul. Kwiatowa 7'),
+       ('MichałWojciechowski', 'test456', 'michal.wojciechowski@example.com', '888888888', 'ul. Słoneczna 8'),
+       ('AlicjaKamińska', 'passwd789', 'alicja.kaminska@example.com', '999999999', 'ul. Parkowa 9'),
+       ('TomaszKowalczyk', 'test123', 'tomasz.kowalczyk@example.com', '000000000', 'ul. Polna 10');
+
+-- Dodawanie przykładowych danych do tabeli Category
+INSERT INTO Category (name)
+VALUES ('Elektronika'),
+       ('Moda'),
+       ('Dom i ogród'),
+       ('Supermarket'),
+       ('Dziecko'),
+       ('Uroda'),
+       ('Zdrowie'),
+       ('Kultura i rozrywka'),
+       ('Sport i turystyka'),
+       ('Motoryzacja'),
+       ('Nieruchomości'),
+       ('Kolekcje i sztuka'),
+       ('Firma i usługi');
+       
+-- Dodawanie przykładowych danych do tabeli Product
+INSERT INTO Product (name, description, product_condition, price, category_id)
+VALUES ('Telewizor Samsung', 'Nowy telewizor 4K o przekątnej 55 cali', 'new', 1999.99, 1),
+       ('Kurtka zimowa', 'Ciepła kurtka z futerkiem w kolorze czarnym', 'new', 209.49, 2),
+       ('Odkurzacz bezworkowy', 'Mocny odkurzacz do sprzątania', 'used', 299.99, 3),
+       ('Smartfon iPhone 12', 'Nowy smartfon z ekranem OLED i potrójnym aparatem', 'new', 1499.99, 1),
+       ('Sukienka wieczorowa', 'Elegancka sukienka z koronkowym wzorem', 'new', 199.00, 2),
+       ('Kosiarka elektryczna', 'Efektywna kosiarka zasilana prądem', 'used', 99.99, 3),
+       ('Mleko UHT', 'Półtłuste mleko w kartonie', 'new', 2.99, 4),
+       ('Zabawka interaktywna', 'Zestaw klocków do budowania z dźwiękami i światłami', 'new', 49.99, 5),
+       ('Krem nawilżający', 'Nawilżający krem do twarzy o działaniu antyoksydacyjnym', 'new', 5.98, 6),
+       ('Termometr elektroniczny', 'Precyzyjny termometr cyfrowy z wyświetlaczem LCD', 'new', 129.99, 7),
+       ('Bilety na koncert', 'Bilety na koncert zespołu rockowego', 'new', 30.00, 8),
+       ('Namiot turystyczny', 'Wytrzymały namiot dla dwóch osób', 'used', 429.39, 9),
+       ('Opona letnia', 'Opona samochodowa letnia o rozmiarze 195/65 R15', 'new', 80.00, 10);
+
+
+-- Dodawanie przykładowych danych do tabeli Orders
+INSERT INTO Orders (buyer_id, seller_id, product_id, price, status)
+VALUES (4, 1, 4, 1499.99, 'placed'),
+       (5, 3, 5, 199.00, 'paid'),
+       (2, 4, 6, 99.99, 'shipped'),
+       (1, 5, 7, 2.99, 'received'),
+       (3, 2, 8, 49.99, 'return');
+
+-- Dodawanie przykładowych danych do tabeli Payment
+INSERT INTO Payment (order_id, payment_method, is_successful)
+VALUES (4, 'Karta debetowa', true),
+       (5, 'Przelew bankowy', true),
+       (2, 'Płatność online', true),
+       (1, 'Gotówka', true),
+       (3, 'Karta kredytowa', true);
+

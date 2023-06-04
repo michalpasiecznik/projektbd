@@ -1,0 +1,12 @@
+No to tak:
+* Możemy to robić w MySQL (za Oracle nie ma żadnych dodatkowych punktów)
+
+* Musimy celować w 4.5 żeby nie pisać egzaminu
+
+* Musi być przynajmniej zrobić 9 funkcji/procedury (ale na 4.5 to przydało by się więcej zrobić bo ja ja zrozumiałem że 9 to min)
+
+* Jakieś GUI jest mile widziane (dodatkowy plusik) ale nie musi być (GUI - połączenie z PHP i jakaś prosta stronka -> o to pytał Kamil, ale sądzę że coś innego też może być)
+
+*Termin jest do początku czerwca żeby to zrobić (bo nie będziemy mieć z nią labów bo Jaromir coś chce się zamienić - nie pytajcie nie zrozumiałem)
+
+* Jakaś mała dokumentacja też musi być

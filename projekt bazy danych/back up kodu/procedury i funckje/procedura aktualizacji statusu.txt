@@ -1,0 +1,58 @@
+DELIMITER //
+CREATE PROCEDURE UpdateOrderStatus(IN orderId INT, IN newStatus ENUM('placed', 'paid', 'shipped', 'received', 'return'))
+BEGIN
+    DECLARE currentStatus ENUM('placed', 'paid', 'shipped', 'received', 'return');
+    SELECT status INTO currentStatus FROM Orders WHERE id = orderId;
+    
+    IF currentStatus = 'placed' THEN
+        IF newStatus = 'paid' OR newStatus = 'shipped' THEN
+            UPDATE Orders
+            SET status = newStatus
+            WHERE id = orderId;
+        ELSE
+            SELECT 'Invalid status transition.';
+        END IF;
+        
+    ELSEIF currentStatus = 'paid' THEN
+        IF newStatus = 'shipped' OR newStatus = 'received' OR newStatus = 'return' THEN
+            UPDATE Orders
+            SET status = newStatus
+            WHERE id = orderId;
+        ELSE
+            SELECT 'Invalid status transition.';
+        END IF;
+        
+    ELSEIF currentStatus = 'shipped' THEN
+        IF newStatus = 'received' OR newStatus = 'return' THEN
+            UPDATE Orders
+            SET status = newStatus
+            WHERE id = orderId;
+        ELSE
+            SELECT 'Invalid status transition.';
+        END IF;
+        
+    ELSEIF currentStatus = 'received' THEN
+        IF newStatus = 'return' THEN
+            UPDATE Orders
+            SET status = newStatus
+            WHERE id = orderId;
+        ELSE
+            SELECT 'Invalid status transition.';
+        END IF;
+        
+    ELSE
+        SELECT 'Invalid current status.';
+    END IF;
+    
+END //
+DELIMITER ;
+
+
+-----------------------------
+
+CALL UpdateOrderStatus(orderId, 'paid');
+
+------------------------------
+Procedura UpdateOrderStatus przyjmuje dwa parametry: orderId - identyfikator zamówienia oraz newStatus - nowy status, który chcesz ustawić. 
+Procedura sprawdza aktualny status zamówienia i wykonuje odpowiednie aktualizacje tylko wtedy, gdy przejście między statusami jest poprawne. 
+W przeciwnym razie zwracane jest odpowiednie komunikaty o błędzie.

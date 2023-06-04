@@ -1,0 +1,30 @@
+DELIMITER //
+
+CREATE FUNCTION GetAveragePriceByCategory(categoryName VARCHAR(255)) RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE avg_price DECIMAL(10, 2);
+    DECLARE categoryId INT;
+    
+    SELECT id INTO categoryId FROM Category WHERE name = categoryName;
+    
+    SELECT AVG(price) INTO avg_price
+    FROM Product
+    WHERE category_id = categoryId;
+    
+    RETURN avg_price;
+END //
+
+DELIMITER ;
+
+
+
+
+
+SELECT GetAveragePriceByCategory('Elektronika') AS 'Average Price';
+
+
+
+
+Funkcja GetAveragePriceByCategory przyjmuje jeden parametr wejściowy category_id, który określa identyfikator kategorii. 
+Funkcja wykonuje zapytanie, które oblicza średnią cenę produktów w tabeli Product dla danej kategorii na podstawie identyfikatora kategorii (category_id)
+i zwraca wynik jako średnią cenę produktów w tej kategorii.

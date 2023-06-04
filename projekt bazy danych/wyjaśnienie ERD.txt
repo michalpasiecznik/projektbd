@@ -1,0 +1,11 @@
+Wyjaśnienie schematu ERD:
+Każdy użytkownik ma swój unikalny identyfikator (id), nazwę użytkownika, hasło, adres e-mail, numer telefonu i adres dostawy.
+Każdy produkt ma swój unikalny identyfikator (id), nazwę, opis, cenę, stan (nowy/ używany), kategorię i identyfikator sprzedającego.
+Każda kategoria ma swój unikalny identyfikator (id) i nazwę.
+Każde zamówienie ma swój unikalny identyfikator (id), identyfikatory kupującego, sprzedającego i produktu, cenę, status (np. złożone, opłacone, wysłane, otrzymane, zwrot) i datę utworzenia.
+Każda płatność ma swój unikalny identyfikator (id), identyfikator zamówienia, metodę płatności, kwotę i datę utworzenia.
+
+W tym schemacie ERD istnieją związki między encjami:
+Produkty są przypisane do kategorii.
+Zamówienia są powiązane z użytkownikami jako kupujący i sprzedający, a także z produktami.
+Płatności są powiązane z zamówieniami.
