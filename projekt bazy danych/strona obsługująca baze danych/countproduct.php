@@ -19,16 +19,19 @@ $category = $_POST["category"];
 $category = $conn->real_escape_string($category);
 
 // Wywołanie funkcji MySQL
-$sql = "SELECT GetProductCountInCategory('$category') AS productCount";
+$sql = "SELECT GetProductCountInCategory('$category') AS productCount, GetAveragePriceByCategory('$category') AS averagePrice, GetProductCountSoldInCategory('$category') AS productCountSold";
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $productCount = $row["productCount"];
-    header("Location: index.html?productCount=" . urlencode($productCount));
+    $averagePrice = $row["averagePrice"];
+	$productCountSold = $row["productCountSold"];
+	
+    header("Location: index.html?productCount=" . urlencode($productCount) . "&averagePrice=" . urlencode($averagePrice) . "&productCountSold=" . urlencode($productCountSold));
 } else {
-    header("Location: index.html?productCount=0");
+    header("Location: index.html?productCount=0&averagePrice=0&productCount=0");
 }
 
 $conn->close();

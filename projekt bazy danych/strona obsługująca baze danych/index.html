@@ -27,7 +27,7 @@
 	
 	<br />
     <br />
-	<h1>Zliczanie produktów w kategorii</h1>
+	<h1>Informację o produktach w danej kategorii</h1>
     <form action="countproduct.php" method="POST">
         <label for="category">Wybierz kategorię:</label>
         <select id="category" name="category">
@@ -50,16 +50,34 @@
     </form>
 
     Liczba produktów: <span id="product_count"></span>
+	<br />
+	Średnia cena: <span id="average_price"></span>
+	<br />
+	Liczba sprzedanych produktów: <span id="product_count_sold"></span>
+	
+<script>
+  // Pobierz wartość parametru "productCount" z adresu URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const productCount = urlParams.get('productCount');
 
-  <script>
-    // Pobierz wartość parametru "productCount" z adresu URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productCount = urlParams.get('productCount');
+  // Pobierz wartość parametru "averagePrice" z adresu URL
+  const averagePrice = urlParams.get('averagePrice');
 
-    // Wyświetl liczbę produktów na stronie
-    const productCountElement = document.getElementById('product_count');
-    productCountElement.textContent = productCount;
-	</script>
+  // Pobierz wartość parametru "productCount" z adresu URL
+  const productCountSold = urlParams.get('productCountSold');
+  
+  
+  // Wyświetl liczbę produktów i średnią cenę na stronie
+  const productCountElement = document.getElementById('product_count');
+  const averagePriceElement = document.getElementById('average_price');
+  const productCountSoldElement = document.getElementById('product_count_sold');
+
+
+  productCountElement.textContent = productCount;
+  averagePriceElement.textContent = averagePrice;
+  productCountSoldElement.textContent = productCountSold;
+  
+</script>
 
 	
 </body>
